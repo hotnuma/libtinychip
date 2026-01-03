@@ -18,12 +18,15 @@ HEADERS = \
     lib/cstring.h \
     lib/cstringlist.h \
     lib/libapp.h \
+    lib/libchip.h \
     lib/libconv.h \
     lib/libhtml.h \
+    lib/libi2c.h \
     lib/libmacros.h \
     lib/libpath.h \
     lib/libstr.h \
     lib/libtest.h \
+    lib/msleep.h \
     lib/print.h \
     test_main.h \
 
@@ -39,6 +42,7 @@ SOURCES = \
     lib/cstring.c \
     lib/cstringlist.c \
     lib/libapp.c \
+    lib/libchip.c \
     lib/libconv.c \
     lib/libhtml.c \
     lib/libpath.c \

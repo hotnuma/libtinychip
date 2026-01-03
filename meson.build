@@ -24,12 +24,13 @@ tinychip_deps = [
 ]
 
 tinychip_headers = [
-    'lib/libgpio.h',
+    'lib/libchip.h',
     'lib/libi2c.h',
     'lib/msleep.h',
 ]
 
 tinychip_sources = [
+    'lib/libchip.c',
 ]
 
 # Build and install library ---------------------------------------------------

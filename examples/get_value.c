@@ -29,7 +29,7 @@ int main()
         printf("switch %d = %d\n", SW_NUM, value);
     }
 
-    gpiod_line_request_release(input_0);
+    chip_line_release(input_0);
 
     return 0;
 }

@@ -1,6 +1,5 @@
 TEMPLATE = app
-#TARGET = tinycmd
-TARGET = tinytest
+TARGET = testcmd
 CONFIG = c99 link_pkgconfig
 PKGCONFIG =
 DEFINES = _GNU_SOURCE __STDC_FORMAT_MACROS bool=BOOL true=TRUE false=FALSE
@@ -32,6 +31,19 @@ HEADERS = \
 
 SOURCES = \
     0temp.c \
+    examples-libgpiod/async_watch_line_value.c \
+    examples-libgpiod/find_line_by_name.c \
+    examples-libgpiod/get_chip_info.c \
+    examples-libgpiod/get_line_info.c \
+    examples-libgpiod/get_line_value.c \
+    examples-libgpiod/get_multiple_line_values.c \
+    examples-libgpiod/reconfigure_input_to_output.c \
+    examples-libgpiod/toggle_line_value.c \
+    examples-libgpiod/toggle_multiple_line_values.c \
+    examples-libgpiod/watch_line_info.c \
+    examples-libgpiod/watch_line_rising.c \
+    examples-libgpiod/watch_line_value.c \
+    examples-libgpiod/watch_multiple_line_values.c \
     examples/get_value.c \
     lib/cdirent.c \
     lib/cdirparser.c \

@@ -3,7 +3,23 @@
 <h4>LibTinyChip</h4>
 
 <ul>
-<li><p>Gpio pinout</p>
+<li><p>Reference</p>
 
-<p><a href="https://pinout.xyz/">https://pinout.xyz/</a>  </p></li>
+<p><a href="https://pinout.xyz/">https://pinout.xyz/</a><br>
+<a href="https://libgpiod.readthedocs.io/en/latest/gpio_tools.html">https://libgpiod.readthedocs.io/en/latest/gpio_tools.html</a>  </p></li>
+<li><p>Tools</p>
+
+<p>There are currently six command-line tools available:</p>
+
+<p><strong>gpiodetect</strong>: list all gpiochips present on the system, their names, labels and number of GPIO lines</p>
+
+<p><strong>gpioinfo</strong>: list lines, their gpiochip, offset, name, and direction, and if in use then the consumer name and any other configured attributes, such as active state, bias, drive, edge detection and debounce period</p>
+
+<p><strong>gpioget</strong>: read values of specified GPIO lines</p>
+
+<p><strong>gpioset</strong>: set values of specified GPIO lines, holding the lines until the process is killed or otherwise exits</p>
+
+<p><strong>gpiomon</strong>: wait for edge events on GPIO lines, specify which edges to watch for, how many events to process before exiting, or if the events should be reported to the console</p>
+
+<p><strong>gpionotify</strong>: wait for changed to the info for GPIO lines, specify which changes to watch for, how many events to process before exiting, or if the events should be reported to the console</p></li>
 </ul>

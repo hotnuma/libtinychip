@@ -31,6 +31,8 @@ HEADERS = \
     test_main.h \
 
 SOURCES = \
+    0temp.c \
+    examples/get_value.c \
     lib/cdirent.c \
     lib/cdirparser.c \
     lib/cfile.c \

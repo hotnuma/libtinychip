@@ -11,6 +11,8 @@ struct gpiod_chip* chip_open(int channel)
 
 struct gpiod_line_request* chip_line_request(struct gpiod_chip *chip,
                                              unsigned int offset,
+                                             enum gpiod_line_direction direction,
+                                             enum gpiod_line_bias bias,
                                              const char *consumer)
 {
     struct gpiod_line_request *request = NULL;
@@ -19,8 +21,10 @@ struct gpiod_line_request* chip_line_request(struct gpiod_chip *chip,
     if (!settings)
         return NULL;
 
-    gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
-    gpiod_line_settings_set_bias(settings, GPIOD_LINE_BIAS_PULL_UP);
+    if (direction != GPIOD_LINE_DIRECTION_AS_IS)
+        gpiod_line_settings_set_direction(settings, direction);
+    if (bias != GPIOD_LINE_BIAS_AS_IS)
+        gpiod_line_settings_set_bias(settings, bias);
 
     struct gpiod_line_config *line_cfg = gpiod_line_config_new();
     if (!line_cfg)

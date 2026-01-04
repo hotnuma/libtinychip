@@ -44,7 +44,7 @@ SOURCES = \
     examples-libgpiod/watch_line_rising.c \
     examples-libgpiod/watch_line_value.c \
     examples-libgpiod/watch_multiple_line_values.c \
-    examples/get_value.c \
+    examples/input_get_value.c \
     lib/cdirent.c \
     lib/cdirparser.c \
     lib/cfile.c \

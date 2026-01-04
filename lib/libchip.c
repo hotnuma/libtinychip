@@ -9,32 +9,19 @@ ChipDevice *chip_open(int channel)
     return gpiod_chip_open(chip_path);
 }
 
-ChipLine* chip_pin_mode(ChipDevice *chip, unsigned int line,
-                        int flags, const char *consumer)
+ChipLine* chip_set_input(ChipDevice *chip, unsigned int line,
+                         int bias, const char *consumer)
 {
-    struct gpiod_line_request *request = NULL;
-
     struct gpiod_line_settings *settings = gpiod_line_settings_new();
     if (!settings)
         return NULL;
 
-    switch (flags)
-    {
-    case PIN_MODE_INPUT:
-        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
-        break;
-    case PIN_MODE_INPUT_PULLUP:
-        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
-        gpiod_line_settings_set_bias(settings, GPIOD_LINE_BIAS_PULL_UP);
-        break;
-    case PIN_MODE_INPUT_PULLDOWN:
-        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
-        gpiod_line_settings_set_bias(settings, GPIOD_LINE_BIAS_PULL_DOWN);
-        break;
-    case PIN_MODE_OUTPUT:
-        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_OUTPUT);
-        break;
-    }
+    gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
+
+    if (bias != GPIOD_LINE_BIAS_AS_IS)
+        gpiod_line_settings_set_bias(settings, bias);
+
+    struct gpiod_line_request *request = NULL;
 
     struct gpiod_line_config *line_cfg = gpiod_line_config_new();
     if (!line_cfg)
@@ -68,4 +55,5 @@ free_settings:
 
     return request;
 }
+
 

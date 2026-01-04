@@ -12,8 +12,8 @@ int main()
     if (!chip)
         return EXIT_FAILURE;
 
-    ChipLine *input_0 = chip_pin_mode(chip, lines[SW_NUM],
-                                      PIN_MODE_OUTPUT, NULL);
+    ChipLine *input_0 = chip_set_input(chip, lines[SW_NUM],
+                                       GPIOD_LINE_BIAS_PULL_UP, NULL);
 
     chip_close(chip);
 

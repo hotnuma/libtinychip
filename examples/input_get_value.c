@@ -6,9 +6,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
+
+int _loop = 1;
+
+void sigint_handler(int sig)
+{
+    (void) sig;
+    _loop = 0;
+}
 
 int main()
 {
+    signal(SIGINT, sigint_handler);
+
     int lines[] = {19, 13, 6, 5};
     int SW_NUM = 1;
 
@@ -24,7 +35,7 @@ int main()
     if (!input_0)
         return EXIT_FAILURE;
 
-    while (1)
+    while (_loop)
     {
         sleep(1);
 
@@ -37,4 +48,5 @@ int main()
 
     return 0;
 }
+
 

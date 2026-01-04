@@ -1,3 +1,7 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2023 Kent Gibson <warthog618@gmail.com>
+ * Minimal example of reading a single line. */
+
 #include <libchip.h>
 #include <stdio.h>
 #include <stdlib.h>

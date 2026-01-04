@@ -18,7 +18,7 @@ ChipLine* chip_set_input(ChipDevice *chip, unsigned int line,
 
     gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
 
-    if (bias != GPIOD_LINE_BIAS_AS_IS)
+    if (bias > GPIOD_LINE_BIAS_AS_IS)
         gpiod_line_settings_set_bias(settings, bias);
 
     struct gpiod_line_request *request = NULL;

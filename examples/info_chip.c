@@ -1,8 +1,7 @@
-// SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Kent Gibson <warthog618@gmail.com>
-
-// Minimal example of reading the info for a chip.
-
+/* SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2023 Kent Gibson <warthog618@gmail.com>
+ *
+ * Minimal example of reading the info for a chip. */
 #include <libchip.h>
 #include <errno.h>
 #include <stdio.h>

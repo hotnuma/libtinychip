@@ -1,7 +1,7 @@
 #include <libchip.h>
 #include <stdio.h>
 
-struct gpiod_chip* chip_open(int channel)
+ChipDevice *chip_open(int channel)
 {
     char chip_path[32];
     sprintf(chip_path, "/dev/gpiochip%d", channel);
@@ -9,11 +9,8 @@ struct gpiod_chip* chip_open(int channel)
     return gpiod_chip_open(chip_path);
 }
 
-struct gpiod_line_request* chip_line_request(struct gpiod_chip *chip,
-                                             unsigned int offset,
-                                             enum gpiod_line_direction direction,
-                                             enum gpiod_line_bias bias,
-                                             const char *consumer)
+ChipLine* chip_pin_mode(ChipDevice *chip, unsigned int line,
+                        int flags, const char *consumer)
 {
     struct gpiod_line_request *request = NULL;
 
@@ -21,17 +18,30 @@ struct gpiod_line_request* chip_line_request(struct gpiod_chip *chip,
     if (!settings)
         return NULL;
 
-    if (direction != GPIOD_LINE_DIRECTION_AS_IS)
-        gpiod_line_settings_set_direction(settings, direction);
-    if (bias != GPIOD_LINE_BIAS_AS_IS)
-        gpiod_line_settings_set_bias(settings, bias);
+    switch (flags)
+    {
+    case PIN_MODE_INPUT:
+        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
+        break;
+    case PIN_MODE_INPUT_PULLUP:
+        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
+        gpiod_line_settings_set_bias(settings, GPIOD_LINE_BIAS_PULL_UP);
+        break;
+    case PIN_MODE_INPUT_PULLDOWN:
+        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_INPUT);
+        gpiod_line_settings_set_bias(settings, GPIOD_LINE_BIAS_PULL_DOWN);
+        break;
+    case PIN_MODE_OUTPUT:
+        gpiod_line_settings_set_direction(settings, GPIOD_LINE_DIRECTION_OUTPUT);
+        break;
+    }
 
     struct gpiod_line_config *line_cfg = gpiod_line_config_new();
     if (!line_cfg)
         goto free_settings;
 
     int ret = gpiod_line_config_add_line_settings(line_cfg,
-                                                  &offset, 1, settings);
+                                                  &line, 1, settings);
     if (ret)
         goto free_line_config;
 

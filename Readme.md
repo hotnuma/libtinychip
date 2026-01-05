@@ -6,7 +6,7 @@
     
     https://pinout.xyz/  
     https://libgpiod.readthedocs.io/en/latest/gpio_tools.html  
-
+    https://abyz.me.uk/lg/lgpio.html  
 
 * Tools
     

@@ -11,10 +11,13 @@ ChipLine* chip_set_input(ChipDevice *chip, unsigned int line,
 ChipLine* chip_set_input_array(ChipDevice *chip,
                                unsigned int *lines, int line_count,
                                int bias, const char *consumer);
+ChipLine* chip_set_output(ChipDevice *chip, unsigned int line,
+                          int value, const char *consumer);
 #define chip_close gpiod_chip_close
 
 #define chip_line_get_value gpiod_line_request_get_value
 #define chip_line_get_array gpiod_line_request_get_values
+#define chip_line_set_value gpiod_line_request_set_value
 #define chip_line_release gpiod_line_request_release
 
 #endif // LIBCHIP_H

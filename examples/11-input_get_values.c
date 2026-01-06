@@ -41,12 +41,11 @@ int main()
     {
         sleep(1);
 
-        chip_line_get_array(inputs, values);
+        chip_line_get_values(inputs, values);
 
         for (int i = 0; i < IN_COUNT; ++i)
         {
             printf("switch %d = %d\n", i, values[i]);
-
         }
     }
 

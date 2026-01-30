@@ -8,6 +8,10 @@
     https://libgpiod.readthedocs.io/en/latest/gpio_tools.html  
     https://abyz.me.uk/lg/lgpio.html  
 
+* Install libgpiod
+
+    `sudo apt install libgpiod-dev`
+
 * Tools
     
     There are currently six command-line tools available:

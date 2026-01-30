@@ -7,7 +7,7 @@ if [[ -d $dest ]]; then
     rm -rf $dest
 fi
 
-meson setup build -Dbuildtype=debug
+meson setup build -Dbuildtype=release
 ninja -C build
 sudo ninja -C build install
 
